@@ -47,6 +47,7 @@ namespace MyGame
             Timer timer = new Timer { Interval = 100 };
             timer.Start();
             timer.Tick += Timer_Tick;
+            Load();
 
         }
         public static void Draw()
