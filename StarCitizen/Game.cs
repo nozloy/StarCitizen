@@ -8,10 +8,10 @@ namespace MyGame
         public static BaseObject[] _objs;
         public static void Load()
         {
-            _objs = new BaseObject[30];
+            _objs = new BaseObject[20];
             for (int i = 0; i < _objs.Length; i++)
-                _objs[i] = new Star(new Point(600, i * 20), new Point(+i, 0), new Size(20, 20));
-
+                for (int k = 0; k < Height; k=k+50)
+                    _objs[i] = new Star(new Point(750,i*50), new Point(30, 0), new Size(20, 20));
         }
 
         public static void Update()
@@ -37,6 +37,8 @@ namespace MyGame
         {
             // Графическое устройство для вывода графики            
             Graphics g;
+            //неведомый метод, убирающий мерцания 
+            //form.Invalidate();
             // Предоставляет доступ к главному буферу графического контекста для текущего приложения
             _context = BufferedGraphicsManager.Current;
             g = form.CreateGraphics();
@@ -46,6 +48,7 @@ namespace MyGame
             Height = form.ClientSize.Height;
             // Связываем буфер в памяти с графическим объектом, чтобы рисовать в буфере
             Buffer = _context.Allocate(g, new Rectangle(0, 0, Width, Height));
+            //Таймер
             Timer timer = new Timer { Interval = 50 };
             timer.Start();
             timer.Tick += Timer_Tick;
@@ -54,14 +57,15 @@ namespace MyGame
         }
         public static void Draw()
         {
-            // Проверяем вывод графики
             Buffer.Graphics.Clear(Color.Black);
-            Buffer.Graphics.DrawRectangle(Pens.White, new Rectangle(100, 100, 200, 200));
-            Buffer.Graphics.FillEllipse(Brushes.Wheat, new Rectangle(100, 100, 200, 200));
+            for (int i = 0; i < Width; i=i+236)
+                for (int k = 0; k < Height; k = k + 236)
+                    Buffer.Graphics.DrawImage(ImageObject.BattleField, i, k);
+            Buffer.Graphics.DrawImage(ImageObject.Tank, 100, 100);
+            Buffer.Graphics.DrawImage(ImageObject.Hash, 500, 150);
             foreach (BaseObject obj in _objs)
                 obj.Draw();
             Buffer.Render();
-
         }
 
 
