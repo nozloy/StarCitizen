@@ -7,7 +7,7 @@
     <ProjectGuid>{8B59F077-53D1-4FE9-8683-7667640074F7}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>StarCitizen</RootNamespace>
-    <AssemblyName>StarCitizen</AssemblyName>
+    <AssemblyName>World_of_Tanchik</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -47,9 +47,11 @@
   <ItemGroup>
     <Compile Include="BaseObject.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="ImageObject.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Star.cs" />
+    <Compile Include="tank.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
